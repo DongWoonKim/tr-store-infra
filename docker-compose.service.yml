@@ -1,0 +1,53 @@
+services:
+  tr-edge-service:
+    build: ../tr-edge-service
+    image: tr-edge-service:latest
+    container_name: tr-edge-service    
+    environment: 
+      AUTH_URI: http://tr-auth-service:9001
+      CATALOG_URI: http://tr-catalog-service:9002
+      SEARCH_URI: http://tr-search-service:9003
+    ports:
+      - "9000:9000" 
+  
+  tr-auth-service:
+    build: ../tr-auth-service
+    image: tr-auth-service:latest
+    container_name: tr-auth-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/auth
+      DB_USERNAME: trevari
+      DB_PASSWORD: trevari
+      JWT_ISSUER: gauri7891@gmail.com
+      JWT_SECRET: pyjWTd80kOTqOrK2lhYnztUIlS3v7VxD4z1iki2XCuX7wYcXpi8XMKU15BDIit9AdZUPYDRQm7Z4r5fLPNZ7Sg==
+    ports:
+      - "9001:9001" 
+
+  tr-catalog-service:
+    build: ../tr-catalog-service
+    image: tr-catalog-service:latest
+    container_name: tr-catalog-service 
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/catalog
+      DB_USERNAME: trevari
+      DB_PASSWORD: trevari            
+    ports:
+      - "9002:9002" 
+  
+  tr-search-service:
+    build: ../tr-search-service
+    image: tr-search-service:latest
+    container_name: tr-search-service 
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/search
+      DB_USERNAME: trevari
+      DB_PASSWORD: trevari
+      SPRING_ELASTICSEARCH_HOST: elasticsearch
+      SPRING_ELASTICSEARCH_PORT: 9200
+      SPRING_ELASTICSEARCH_SCHEME: http      
+    ports:
+      - "9003:9003" 
+
+networks:
+  default:
+    name: tr-net

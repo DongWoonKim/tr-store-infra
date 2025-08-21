@@ -1,0 +1,13 @@
+services:
+  tr-web-service:
+    build: ../tr-web-service
+    image: tr-web-service:latest
+    container_name: tr-web-service    
+    environment: 
+      EDGE_SERVICE_URL: http://tr-edge-service:9000
+    ports:
+      - "8001:8001" 
+
+networks:
+  default:
+    name: tr-net
