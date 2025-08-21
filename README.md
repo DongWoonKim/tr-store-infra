@@ -111,6 +111,9 @@ chmod +x start.sh
 
 # 실행
 ./start.sh
+
+# 회원가입 후, 로그인해 주세요.
+http://localhost:8001/auth/login
 ```
 
 # 🗺️ 아키텍처 및 기술 스택 선택 배경
