@@ -155,6 +155,7 @@ http://localhost:8001/auth/login
 
 처음에는 검색 기능을 고려하여 **PostgreSQL의 Full-Text Search(FTS)** 기능을 활용하기 위해 PostgreSQL을 선택했습니다.  
 저장되는 데이터가 정형 데이터이므로 굳이 NoSQL을 선택할 필요가 없다고 판단했습니다.  
+또 Databaser같은 경우 한번 선택하면 변경이 쉽지 않기에 여러 확장성과 PostgreSQL이 갖는 특징 등을 고려했을 때 적합하다 판단하여 그대로 유지합니다.
 
 하지만 초기 모놀리식 아키텍처를 폐기하고 다시 설계하는 과정에서, 전문 검색 엔진을 도입하기로 결정했습니다.  
 그 과정에서 **OpenSearch**와 **Elasticsearch**를 모두 검토했으나, 최종적으로 Elasticsearch를 선택했습니다.
