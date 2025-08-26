@@ -44,7 +44,8 @@ services:
       DB_PASSWORD: trevari
       SPRING_ELASTICSEARCH_HOST: elasticsearch
       SPRING_ELASTICSEARCH_PORT: 9200
-      SPRING_ELASTICSEARCH_SCHEME: http      
+      SPRING_ELASTICSEARCH_SCHEME: http 
+      SEARCH_INDEX_INIT_ENABLED: false    
     ports:
       - "9003:9003" 
 
